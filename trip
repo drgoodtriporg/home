@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanoi Bro Weekend</title>
+    <style>
+        :root {
+            --bg: #f4f7f6;
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --card-bg: #ffffff;
+            --text: #333;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .hotel-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .tabs {
+            display: flex;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            font-weight: bold;
+            color: #7f8c8d;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+        }
+        .content {
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .day-section {
+            display: none;
+        }
+        .day-section.active {
+            display: block;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+        }
+        .time {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 1.1em;
+            font-weight: bold;
+            display: block;
+        }
+        .chinese {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .map-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .tips {
+            background: #dfe6e9;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        .master-btn {
+            display: block;
+            text-align: center;
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2 style="margin:0;">🇻🇳 Hanoi Bro Weekend</h2>
+    <div class="hotel-tag">Stay: Anatole Hotel Hanoi</div>
+</header>
+
+<a href="https://www.google.com/maps/dir/Anatole+Hotel+Hanoi/Bun+Cha+1+Hang+Manh/Vietnam+Military+History+Museum/Ho+Chi+Minh+Mausoleum/Temple+of+Literature" class="master-btn" target="_blank">📍 Open All Pins in Google Maps</a>
+
+<div class="tabs">
+    <button class="tab-btn active" onclick="openDay(event, 'sat')">SAT</button>
+    <button class="tab-btn" onclick="openDay(event, 'sun')">SUN</button>
+    <button class="tab-btn" onclick="openDay(event, 'mon')">MON</button>
+</div>
+
+<div class="content">
+    <div id="sat" class="day-section active">
+        <div class="card">
+            <span class="time">10:30 AM</span>
+            <span class="title">🛬 Land at Noi Bai</span>
+            <p>Grab a car to Anatole Hotel (approx. 45 mins).</p>
+        </div>
+
+        <div class="card">
+            <span class="time">01:00 PM</span>
+            <span class="title">🥣 Bún Chả Số 1 Hàng Mành <span class="chinese">(姮茫1號烤肉米線)</span></span>
+            <p>Legendary grilled pork vermicelli. Hearty first meal.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Bun+Cha+Dac+Kim+1+Hang+Manh" class="map-btn" target="_blank">🗺️ Open Map</a>
+        </div>
+
+        <div class="card">
+            <span class="time">02:30 PM</span>
+            <span class="title">🚁 Military History Museum <span class="chinese">(越南軍事歷史博物館)</span></span>
+            <p>Check out the new massive facility. Tanks, planes, and history.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Vietnam+Military+History+Museum+New+Location" class="map-btn" target="_blank">🗺️ Open Map</a>
+        </div>
+
+        <div class="card">
+            <span class="time">04:30 PM</span>
+            <span class="title">🏰 Imperial Citadel <span class="chinese">(昇龍皇城)</span></span>
+            <p>Ancient UNESCO site and war command bunkers.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Imperial+Citadel+of+Thang+Long" class="map-btn" target="_blank">🗺️ Open Map</a>
+        </div>
+    </div>
+
+    <div id="sun" class="day-section">
+        <div class="card">
+            <span class="time">08:30 AM</span>
+            <span class="title">🏛️ Ho Chi Minh's Mausoleum <span class="chinese">(胡志明主席陵)</span></span>
+            <p>Arrive early! Dress code: Covered shoulders and knees.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ho+Chi+Minh+Mausoleum" class="map-btn" target="_blank">🗺️ Open Map</a>
+        </div>
+
+        <div class="card">
+            <span class="time">11:00 AM</span>
+            <span class="title">📜 Temple of Literature <span class="chinese">(文廟-國子監)</span></span>
+            <p>Vietnam's first university. Peaceful chill gardens.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Temple+of+Literature+Hanoi" class="map-btn" target="_blank">🗺️ Open Map</a>
+        </div>
+
+        <div class="card">
+            <span class="time">01:00 PM</span>
+            <span class="title">🐟 Chả Cá Anh Vũ <span class="chinese">(英武炙魚)</span></span>
+            <p>Sizzling turmeric fish with dill. A Hanoi must-try.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Cha+Ca+Anh+Vu+120+Giang+Vo" class="map-btn" target="_blank">🗺️ Open Map</a>
+        </div>
+
+        <div class="card">
+            <span class="time">04:00 PM</span>
+            <span class="title">🌅 West Lake Sunset <span class="chinese">(西湖)</span></span>
+            <p>Grab a car to the lakeside for coffee or drinks with a view.</p>
+            <a href="https://www.google.
