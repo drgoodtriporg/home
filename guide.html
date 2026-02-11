@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychedelic-Assisted Therapy Summary</title>
+    <style>
+        :root {
+            --primary-color: #4a3b75; /* Deep purple/indigo inspired by BrainFutures branding */
+            --secondary-color: #6b5b95;
+            --accent-color: #ff6f61;
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --nav-text: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header / APA Citation */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .citation {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Layout */
+        .app-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 80px; /* Space for bottom nav on mobile */
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-color);
+            flex-grow: 1;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .nav-btn.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            background-color: #f9f9ff;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Highlight Box for Acceptance Model */
+        .highlight-box {
+            background-color: #e8eaf6;
+            border-left: 5px solid var(--accent-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-title {
+            font-weight: bold;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Source Tag Styling */
+        .source-tag {
+            font-size: 0.75rem;
+            color: #888;
+            vertical-align: super;
+            text-decoration: none;
+            margin-left: 2px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 40px;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 600px) {
+            .nav-tabs {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: 0;
+                z-index: 1000;
+                border-radius: 0;
+                border-top: 1px solid #ddd;
+            }
+            
+            .nav-btn {
+                padding: 10px;
+                font-size: 0.8rem;
+                flex-basis: 33%; /* 3 buttons per row roughly */
+            }
+
+            .app-container {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="citation">
+        BrainFutures. (2022). <em>An Expert-Informed Introduction to the Elements of Psychedelic-Assisted Therapy</em>. BrainFutures. https://www.brainfutures.org/
+    </div>
+</header>
+
+<div class="app-container">
+
+    <nav class="nav-tabs">
+        <button class="nav-btn active" onclick="openTab('screening')">Screening</button>
+        <button class="nav-btn" onclick="openTab('preparation')">Preparation</button>
+        <button class="nav-btn" onclick="openTab('setting')">Set & Setting</button>
+        <button class="nav-btn" onclick="openTab('session')">Session</button>
+        <button class="nav-btn" onclick="openTab('integration')">Integration</button>
+        <button class="nav-btn" onclick="openTab('safety')">Safety</button>
+    </nav>
+
+    <div id="screening" class="content-section active">
+        <div class="card">
+            <h3>Phase 1: Screening & Assessment</h3>
+            <p><strong>Goal:</strong> To determine if psychedelic-assisted therapy is appropriate and safe for the patient's specific physiological and psychological history <span class="source-tag"></span>.</p>
+            
+            <h4>Comprehensive Review</h4>
+            <ul>
+                <li><strong>Holistic Screening:</strong> Includes physiological and psychological assessments to rule out conditions that complicate treatment <span class="source-tag"></span>.</li>
+                <li><strong>Baselines:</strong> Use validated tools (e.g., CAPS-5 for PTSD, MADRS for depression) to establish a baseline and track symptoms <span class="source-tag"></span>.</li>
+                <li><strong>Medical History:</strong> Screen for cardiac conditions, which are primary physical contraindications <span class="source-tag"></span>.</li>
+                <li><strong>Medications:</strong> Assess for drug interactions; patients may need to discontinue antidepressants 6–8 weeks prior to the session <span class="source-tag"></span>.</li>
+            </ul>
+
+            <h4>Trauma & Exclusions</h4>
+            <ul>
+                <li><strong>Trauma Assessment:</strong> Identify trauma history to understand what may arise, but avoid detailed descriptions to prevent premature triggering <span class="source-tag"></span>.</li>
+                <li><strong>Contraindications:</strong> Common exclusions include psychosis, schizophrenia, bipolar disorder (compound dependent), and cardiovascular disease <span class="source-tag"></span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="preparation" class="content-section">
+        <div class="card">
+            <h3>Phase 2: Preparation</h3>
+            <p><strong>Goal:</strong> To build trust, educate on the philosophy, and establish safety protocols over roughly three 90-minute sessions <span class="source-tag"></span>.</p>
+
+            <h4>The Therapeutic Alliance</h4>
+            <ul>
+                <li>Rapport is paramount; a lack of trust can lead to overwhelming experiences <span class="source-tag"></span>.</li>
+                <li>Patients are encouraged to consciously "choose to trust" and voice any ruptures immediately <span class="source-tag"></span>.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <span class="highlight-title">The Acceptance Model</span>
+                <p><strong>Inner Healing Intelligence:</strong> Patients are taught they have an innate capacity to heal their own wounds; the therapy relies on the patient discovering their own answers <span class="source-tag"></span>.</p>
+                <p><strong>Key Mantras:</strong> To aid surrender, therapists teach mantras like: <em>"Trust, let go, be open"</em> or <em>"Enter into it and look out through its eyes"</em> <span class="source-tag"></span>.</p>
+                <p><strong>Counter Avoidance:</strong> Patients must be prepared to face experiences head-on rather than intellectualizing or avoiding them <span class="source-tag"></span>.</p>
+            </div>
+
+            <h4>Logistics & Consent</h4>
+            <ul>
+                <li><strong>Informed Consent:</strong> An ongoing conversation, not just a form. Patients can revoke consent at any time <span class="source-tag"></span>.</li>
+                <li><strong>Touch Boundaries:</strong> Explicitly agree on supportive touch (e.g., hand-holding) before the session starts <span class="source-tag"></span>.</li>
+                <li><strong>Physical Prep:</strong> Advice on fasting/light breakfast and comfortable clothing <span class="source-tag"></span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="setting" class="content-section">
+        <div class="card">
+            <h3>Phase 3: Set and Setting</h3>
+            <p><strong>Goal:</strong> To optimize the patient's mindset (Set) and the physical environment (Setting) <span class="source-tag"></span>.</p>
+
+            <h4>Set (Mindset)</h4>
+            <ul>
+                <li>Includes expectations, motivations, and mood <span class="source-tag"></span>.</li>
+                <li>Ensure the patient is calm; if acutely distressed, the session should be postponed <span class="source-tag"></span>.</li>
+            </ul>
+
+            <h4>Setting (Environment)</h4>
+            <ul>
+                <li><strong>Physical Space:</strong> A living-room-like environment with soft lighting and couches is preferred over sterile rooms <span class="source-tag"></span>.</li>
+                <li><strong>Personalization:</strong> Patients may bring meaningful items (photos, blankets) for safety <span class="source-tag"></span>.</li>
+                <li><strong>Sensory Tools:</strong> Eyeshades and headphones with music facilitate inward focus <span class="source-tag"></span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="session" class="content-section">
+        <div class="card">
+            <h3>Phase 4: The Medication Session</h3>
+            <p><strong>Goal:</strong> A multi-hour appointment (often 6–8 hours) where the therapist supports the patient's inward journey <span class="source-tag"></span>.</p>
+
+            <div class="highlight-box">
+                <span class="highlight-title">Acceptance in Action</span>
+                <p><strong>Surrender:</strong> Patients are instructed to "accept whatever comes up," believing it is exactly what is supposed to happen <span class="source-tag"></span>.</p>
+                <p><strong>The Only Way Out Is Through:</strong> If shame, guilt, or fear arise, patients are encouraged to stay with the feelings fully rather than resisting <span class="source-tag"></span>.</p>
+            </div>
+
+            <h4>Therapist Role: Nondirective</h4>
+            <ul>
+                <li><strong>Midwifery Approach:</strong> Provide safety and reassurance but do not guide or direct the journey <span class="source-tag"></span>.</li>
+                <li><strong>Silence:</strong> Therapists remain largely silent unless engaged by the patient <span class="source-tag"></span>.</li>
+                <li><strong>Non-Judgment:</strong> "Turn off the rational mind" and avoid pathologizing the experience <span class="source-tag"></span>.</li>
+            </ul>
+
+            <h4>Handling Challenges</h4>
+            <ul>
+                <li>Provide grounding presence or agreed-upon touch for anxiety <span class="source-tag"></span>.</li>
+                <li>Monitor physiological safety (BP, heart rate) at scheduled intervals <span class="source-tag"></span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="integration" class="content-section">
+        <div class="card">
+            <h3>Phase 5: Integration</h3>
+            <p><strong>Goal:</strong> To assimilate insights from the session into daily life, beginning the morning after the session <span class="source-tag"></span>.</p>
+
+            <h4>Key Activities</h4>
+            <ul>
+                <li><strong>Processing:</strong> Journaling and detailed recall to capture salient aspects of the experience <span class="source-tag"></span>.</li>
+                <li><strong>Meaning-Making:</strong> Apply insights specifically to the diagnosis (e.g., depression, PTSD) <span class="source-tag"></span>.</li>
+                <li><strong>Frameworks:</strong> Therapists may use <strong>Acceptance and Commitment Therapy (ACT)</strong> or Internal Family Systems (IFS) to structure integration <span class="source-tag"></span>.</li>
+            </ul>
+
+            <h4>Navigating Changes</h4>
+            <ul>
+                <li><strong>Ontological Shock:</strong> Be prepared for profound shifts in worldview or sense of self (ego dissolution) <span class="source-tag"></span>.</li>
+                <li><strong>Life Decisions:</strong> Advise patients to avoid major life decisions immediately after the session <span class="source-tag"></span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="safety" class="content-section">
+        <div class="card">
+            <h3>Safety & Ethical Practice</h3>
+            <p><strong>Overview:</strong> Safety is foundational. Precautions must be taken regarding psychological, physiological, and ethical risks <span class="source-tag"></span>.</p>
+
+            <h4>Psychological & Physiological</h4>
+            <ul>
+                <li><strong>Suicidality:</strong> Watch for suicidality, especially during early integration phases <span class="source-tag"></span>.</li>
+                <li><strong>Spiritual Emergency:</strong> Be aware that some experiences may resemble psychosis but are part of the process <span class="source-tag"></span>.</li>
+                <li><strong>Vitals:</strong> Monitor for elevated heart rate and blood pressure <span class="source-tag"></span>.</li>
+            </ul>
+
+            <h4>Ethical Conduct</h4>
+            <ul>
+                <li><strong>Vulnerability:</strong> Patients are in a highly vulnerable state; strict boundaries prevent sexual or financial abuse <span class="source-tag"></span>.</li>
+                <li><strong>Protection:</strong> Measures such as having two therapists present and video recording are recommended <span class="source-tag"></span>.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>Generated based on <em>An Expert-Informed Introduction to the Elements of Psychedelic-Assisted Therapy</em> (2022).</p>
+</footer>
+
+<script>
+    function openTab(tabName) {
+        // Hide all content sections
+        var i;
+        var x = document.getElementsByClassName("content-section");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+            x[i].classList.remove("active");
+        }
+        
+        // Remove active class from all buttons
+        var btns = document.getElementsByClassName("nav-btn");
+        for (i = 0; i < btns.length; i++) {
+            btns[i].classList.remove("active");
+        }
+
+        // Show the specific tab content
+        document.getElementById(tabName).style.display = "block";
+        
+        // Add active class to the button that opened the tab (found by matching onclick)
+        // Simple workaround: Since we pass the ID, we can find the button. 
+        // Better yet, add 'active' to current button context:
+        event.currentTarget.classList.add("active");
+        
+        // Trigger animation
+        document.getElementById(tabName).classList.add("active");
+    }
+</script>
+
+</body>
+</html>
