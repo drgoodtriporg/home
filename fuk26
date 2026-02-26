@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北九州 7日6夜 浪漫精華遊</title>
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --bg-color: #F4F7F6;
+            --card-bg: #FFFFFF;
+            --text-main: #333333;
+            --text-sub: #777777;
+            --border-radius: 12px;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 16px;
+            padding-bottom: 40px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 4px;
+            display: inline-block;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .day-header {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .item {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .time-tag {
+            font-size: 0.85rem;
+            background: #E8F0FE;
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .btn-map {
+            display: inline-block;
+            margin-top: 8px;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .btn-map:active {
+            background-color: #357ABD;
+        }
+        .emoji { margin-right: 6px; }
+        .info-text { font-size: 0.9rem; color: var(--text-sub); margin-top: 4px;}
+    </style>
+</head>
+<body>
+
+    <h1>🇯🇵 北九州 7日6夜 浪漫精華遊</h1>
+
+    <div class="card">
+        <h2 class="day-header">✈️ 航班資訊</h2>
+        <div class="item">
+            <strong>去程 (4/4 六)</strong><br>
+            UO668｜HKG 10:55 ➔ FUK 15:20
+        </div>
+        <div class="item">
+            <strong>回程 (10/4 五)</strong><br>
+            UO601｜FUK 12:55 ➔ HKG 15:35
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="day-header">Day 1｜4/4 (Sat) 福岡到着・燒肉之夜</h2>
+        <div class="item">
+            <span class="time-tag">15:20</span> 抵達福岡機場，搭地鐵往市區<br>
+            <a href="https://maps.google.com/?q=Fukuoka+Airport" target="_blank" class="btn-map">📍 機場 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🏨</span> <strong>入住:</strong> Dormy Inn Hakata Gion<br>
+            <a href="https://maps.google.com/?q=Dormy+Inn+Hakata+Gion" target="_blank" class="btn-map">📍 酒店 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🥩</span> <strong>晚餐:</strong> 燒肉 (平尾亞李蘭別邸 或 博多肉一)<br>
+            <a href="https://maps.google.com/?q=焼肉+肉一+博多店" target="_blank" class="btn-map">📍 燒肉 肉一 Map</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="day-header">Day 2｜5/4 (Sun) 漫步賞櫻・水炊雞名物</h2>
+        <div class="item">
+            <span class="emoji">🥖</span> <strong>早餐/小食:</strong> Full Full (fufu) 明太子法包<br>
+            <a href="https://maps.google.com/?q=Full+Full+Hakata" target="_blank" class="btn-map">📍 Full Full Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🌸</span> <strong>景點:</strong> 大濠公園 / 舞鶴公園 (賞櫻)<br>
+            <a href="https://maps.google.com/?q=Ohori+Park+Fukuoka" target="_blank" class="btn-map">📍 大濠公園 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🍲</span> <strong>晚餐:</strong> 水炊雞 (水たき 鳥善 或 橙)<br>
+            <a href="https://maps.google.com/?q=水たき+鳥善+中洲" target="_blank" class="btn-map">📍 鳥善 Map</a>
+            <a href="https://maps.google.com/?q=水たき+橙+福岡" target="_blank" class="btn-map">📍 橙 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🏨</span> <strong>住宿:</strong> Dormy Inn Hakata Gion
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="day-header">Day 3｜6/4 (Mon) 武雄巡禮・極致溫泉</h2>
+        <div class="item">
+            <span class="emoji">🚆</span> <strong>早上:</strong> 寄放大型行李，搭特急前往武雄溫泉
+        </div>
+        <div class="item">
+            <span class="emoji">⛩️</span> <strong>景點:</strong> 武雄市圖書館 & 武雄神社 (大楠樹)<br>
+            <a href="https://maps.google.com/?q=Takeo+City+Library" target="_blank" class="btn-map">📍 圖書館 Map</a>
+            <a href="https://maps.google.com/?q=Takeo+Shrine" target="_blank" class="btn-map">📍 武雄神社 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🚄</span> <strong>下午:</strong> 轉搭西九州新幹線 (5分鐘) 至嬉野溫泉
+        </div>
+        <div class="item">
+            <span class="emoji">🏨</span> <strong>入住 & 晚餐:</strong> 嬉野溫泉 八十八 (URESHINO YADOYA)<br>
+            <div class="info-text">盡情享受頂級溫泉及懷石料理</div>
+            <a href="https://maps.google.com/?q=嬉野+八十八+Ureshino+Yadoya" target="_blank" class="btn-map">📍 嬉野 八十八 Map</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="day-header">Day 4｜7/4 (Tue) 熊本入城・海賊王出航</h2>
+        <div class="item">
+            <span class="emoji">🚄</span> <strong>早上:</strong> 新幹線前往熊本站
+        </div>
+        <div class="item">
+            <span class="emoji">🏴‍☠️</span> <strong>海賊王打卡:</strong> 路飛像 & 索柏像<br>
+            <a href="https://maps.google.com/?q=Luffy+Statue+Kumamoto+Prefectural+Office" target="_blank" class="btn-map">📍 路飛像 Map</a>
+            <a href="https://maps.google.com/?q=Chopper+Statue+Kumamoto+Botanical+Gardens" target="_blank" class="btn-map">📍 索柏像 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🏯</span> <strong>景點:</strong> 熊本城 & 櫻之馬場城彩苑<br>
+            <a href="https://maps.google.com/?q=Kumamoto+Castle" target="_blank" class="btn-map">📍 熊本城 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🏨</span> <strong>入住:</strong> THE BLOSSOM KUMAMOTO<br>
+            <a href="https://maps.google.com/?q=THE+BLOSSOM+KUMAMOTO" target="_blank" class="btn-map">📍 酒店 Map</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="day-header">Day 5｜8/4 (Wed) 尋找卓洛・博多牛腸鍋</h2>
+        <div class="item">
+            <span class="emoji">⚔️</span> <strong>早上 (海賊王):</strong> 卓洛像 (乘 JR 至肥後大津站)<br>
+            <a href="https://maps.google.com/?q=Zoro+Statue+Ozu+Central+Park" target="_blank" class="btn-map">📍 卓洛像 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🤖</span> <strong>下午:</strong> 新幹線返博多 ➔ LaLaport 福岡睇 1:1 鋼彈<br>
+            <a href="https://maps.google.com/?q=LaLaport+Fukuoka" target="_blank" class="btn-map">📍 LaLaport Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🥘</span> <strong>晚餐:</strong> 博多もつ鍋 徳永屋 総本店 (牛腸鍋)<br>
+            <a href="https://maps.google.com/?q=博多もつ鍋+徳永屋+総本店" target="_blank" class="btn-map">📍 徳永屋 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🏨</span> <strong>入住:</strong> THE BLOSSOM HAKATA Premier<br>
+            <a href="https://maps.google.com/?q=THE+BLOSSOM+HAKATA+Premier" target="_blank" class="btn-map">📍 酒店 Map</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="day-header">Day 6｜9/4 (Thu) 太宰府・燒鳥 Omakase</h2>
+        <div class="item">
+            <span class="emoji">⛩️</span> <strong>早上:</strong> 太宰府天滿宮參拜<br>
+            <a href="https://maps.google.com/?q=Dazaifu+Tenmangu" target="_blank" class="btn-map">📍 太宰府 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🍱</span> <strong>午餐:</strong> 門前茶屋 山屋 (明太子茶漬飯) 或 鳥冬蕎麥麵
+        </div>
+        <div class="item">
+            <span class="emoji">🛍️</span> <strong>下午:</strong> 博多阪急排隊搶購 Amanberry 手信<br>
+            <div class="info-text">提早排隊，極速售罄</div>
+            <a href="https://maps.google.com/?q=Hakata+Hankyu" target="_blank" class="btn-map">📍 博多阪急 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🍢</span> <strong>晚餐:</strong> 焼き鳥 こと (Yakitori Koto) 燒鳥 Omakase<br>
+            <a href="https://maps.google.com/?q=焼き鳥+こと+福岡" target="_blank" class="btn-map">📍 焼き鳥 こと Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🍻</span> <strong>宵夜:</strong> 博多屋台 からす天狗<br>
+            <a href="https://maps.google.com/?q=博多屋台+からす天狗" target="_blank" class="btn-map">📍 からす天狗 Map</a>
+        </div>
+        <div class="item">
+            <span class="emoji">🏨</span> <strong>住宿:</strong> THE BLOSSOM HAKATA Premier
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="day-header">Day 7｜10/4 (Fri) 滿載而歸</h2>
+        <div class="item">
+            <span class="time-tag">10:30</span> 抵達福岡機場，辦理登機手續<br>
+            <div class="info-text">機場內作最後手信衝刺</div>
+            <a href="https://maps.google.com/?q=Fukuoka+Airport+International+Terminal" target="_blank" class="btn-map">📍 機場國際線 Map</a>
+        </div>
+        <div class="item">
+            <span class="time-tag">12:55</span> 乘搭 UO601 航班回港
+        </div>
+        <div class="item">
+            <span class="time-tag">15:35</span> 順利抵達香港
+        </div>
+    </div>
+
+</body>
+</html>
