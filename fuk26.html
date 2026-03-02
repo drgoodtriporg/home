@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>北九州 7日6夜 賞櫻美食之旅</title>
+    <title>北九州 7日6夜 溫泉與賞櫻美食之旅</title>
     <style>
         :root {
             --primary-color: #D35400; 
+            --doc-color: #2980B9; /* 文件連結顏色 */
             --bg-color: #F8F5F2;
             --card-bg: #FFFFFF;
             --text-main: #333333;
@@ -73,13 +74,13 @@
             border-radius: 6px;
             font-weight: bold;
             margin-top: 6px;
+            margin-bottom: 6px;
             display: inline-block;
         }
-        .btn-map {
+        .btn-map, .btn-doc {
             display: inline-block;
             margin-top: 8px;
             margin-right: 6px;
-            background-color: var(--primary-color);
             color: #FFFFFF;
             text-decoration: none;
             font-size: 0.85rem;
@@ -87,8 +88,17 @@
             border-radius: 20px;
             font-weight: 500;
         }
+        .btn-map {
+            background-color: var(--primary-color);
+        }
         .btn-map:active {
             background-color: #A04000;
+        }
+        .btn-doc {
+            background-color: var(--doc-color);
+        }
+        .btn-doc:active {
+            background-color: #1A5276;
         }
         .emoji { margin-right: 6px; font-size: 1.1rem; }
         .info-text { font-size: 0.9rem; color: var(--text-sub); margin-top: 4px;}
@@ -119,11 +129,13 @@
         <div class="item">
             <span class="emoji">🏨</span> <strong>入住:</strong> Dormy Inn Hakata Gion<br>
             <a href="https://www.google.com/maps/search/?api=1&query=Dormy+Inn+Hakata+Gion" target="_blank" class="btn-map">📍 酒店 Map</a>
+            <a href="https://github.com/drgoodtriporg/home/blob/main/fuk26_files/Booking%20%235129112990.pdf" target="_blank" class="btn-doc">📄 酒店預約單</a>
         </div>
         <div class="item">
             <span class="time-tag">19:00</span> <span class="emoji">🍲</span> <strong>晚餐: 水炊き 橙 (Mizutaki Daidai)</strong><br>
-            <div class="booking-tag">✅ 已預訂：2人 | ¥8,300預付</div>
+            <div class="booking-tag">✅ 已預訂：2人 | ¥8,300預付</div><br>
             <a href="https://www.google.com/maps/search/?api=1&query=Mizutaki+Daidai+Fukuoka" target="_blank" class="btn-map">📍 橙 Map</a>
+            <a href="https://github.com/drgoodtriporg/home/blob/main/fuk26_files/PHOTO-2026-03-01-19-50-15.jpg" target="_blank" class="btn-doc">📄 餐廳確認信</a>
         </div>
     </div>
 
@@ -138,8 +150,9 @@
         </div>
         <div class="item">
             <span class="time-tag">20:30</span> <span class="emoji">🥩</span> <strong>晚餐: 薬院焼肉NIKUICHI</strong><br>
-            <div class="booking-tag">✅ 已預訂：2人 | 預約ID: GWGQPF</div>
+            <div class="booking-tag">✅ 已預訂：2人 | 預約ID: GWGQPF</div><br>
             <a href="https://www.google.com/maps/search/?api=1&query=Yakuin+Yakiniku+NIKUICHI" target="_blank" class="btn-map">📍 NIKUICHI Map</a>
+            <a href="https://github.com/drgoodtriporg/home/blob/main/fuk26_files/PHOTO-2026-03-01-19-44-22.jpg" target="_blank" class="btn-doc">📄 餐廳確認信</a>
         </div>
         <div class="item">
             <span class="emoji">🏨</span> <strong>住宿:</strong> Dormy Inn Hakata Gion
@@ -163,6 +176,7 @@
             <span class="emoji">🏨</span> <strong>入住 & 晚餐:</strong> 嬉野溫泉 八十八 (URESHINO YADOYA)<br>
             <div class="info-text">盡情享受頂級溫泉及懷石料理</div>
             <a href="https://www.google.com/maps/search/?api=1&query=URESHINO+YADOYA+88" target="_blank" class="btn-map">📍 嬉野 八十八 Map</a>
+            <a href="https://github.com/drgoodtriporg/home/blob/main/fuk26_files/Booking%20%235925159295.pdf" target="_blank" class="btn-doc">📄 酒店預約單</a>
         </div>
     </div>
 
@@ -198,6 +212,7 @@
         <div class="item">
             <span class="emoji">🏨</span> <strong>入住:</strong> THE BLOSSOM HAKATA Premier<br>
             <a href="https://www.google.com/maps/search/?api=1&query=THE+BLOSSOM+HAKATA+Premier" target="_blank" class="btn-map">📍 酒店 Map</a>
+            <a href="https://github.com/drgoodtriporg/home/blob/main/fuk26_files/Booking%20%236295213319.pdf" target="_blank" class="btn-doc">📄 酒店預約單</a>
         </div>
     </div>
 
@@ -223,8 +238,9 @@
         </div>
         <div class="item">
             <span class="time-tag">18:00</span> <span class="emoji">🍢</span> <strong>晚餐: 焼き鳥 こと (Yakitori Koto)</strong><br>
-            <div class="booking-tag">✅ 已預訂：2人 (Eva So) | 確認號碼: U26SN6</div>
+            <div class="booking-tag">✅ 已預訂：2人 (Eva So) | 確認號碼: U26SN6</div><br>
             <a href="https://www.google.com/maps/search/?api=1&query=Yakitori+Koto+Fukuoka" target="_blank" class="btn-map">📍 焼き鳥 こと</a>
+            <a href="https://github.com/drgoodtriporg/home/blob/main/fuk26_files/PHOTO-2026-03-01-21-32-51.jpg" target="_blank" class="btn-doc">📄 餐廳確認信</a>
         </div>
         <div class="item">
             <span class="emoji">🍻</span> <strong>宵夜:</strong> 博多屋台 からす天狗 (Karasu Tengu)<br>
