@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,300&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="bg1.png">
+    <link rel="preload" as="image" href="sky-mask.png">
     <style>
         * {
             box-sizing: border-box;
@@ -23,7 +25,10 @@
         }
 
         /* BACKGROUND IMAGE
-           Uses bg1.png from your repository
+           Uses bg1.png from your repository.
+           The plate is still. A masked copy of the sky drifts above it,
+           and a soft curtain shimmers in the aurora. sky-mask.png is
+           clear on the peaks, so the mountains never move.
         */
         .background-overlay {
             position: fixed;
@@ -36,15 +41,124 @@
             background-position: center;
             background-repeat: no-repeat;
             z-index: 1;
+            overflow: hidden;
+        }
+
+        .sky-window {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+            -webkit-mask-image: url('sky-mask.png');
+            mask-image: url('sky-mask.png');
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-size: cover;
+            mask-size: cover;
+        }
+
+        .sky-drift,
+        .sky-window::before {
+            background-image: url('bg1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .sky-drift {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            transform-origin: 50% 18%;
+            animation: aurora-drift 22s ease-in-out infinite;
+            will-change: transform, filter;
+        }
+
+        /* A second exposure of the same sky, out of phase, so highlights breathe. */
+        .sky-window::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            transform-origin: 40% 10%;
+            mix-blend-mode: soft-light;
+            animation: aurora-sheen 14s ease-in-out infinite;
+            will-change: transform, opacity;
+        }
+
+        /* Soft columns of light that travel across the aurora. */
+        .aurora-band {
+            position: absolute;
+            top: -8%;
+            left: 0;
+            height: 70%;
+            width: 32%;
+            z-index: 3;
+            border-radius: 50%;
+            filter: blur(10px);
+            mix-blend-mode: screen;
+            pointer-events: none;
+            will-change: transform, opacity;
+        }
+
+        .aurora-band-a {
+            background: radial-gradient(ellipse at 50% 42%, rgba(170, 255, 235, 0.95), rgba(0, 170, 160, 0.28) 46%, transparent 72%);
+            animation: aurora-band 16s ease-in-out infinite;
+        }
+
+        .aurora-band-b {
+            background: radial-gradient(ellipse at 50% 48%, rgba(210, 160, 255, 0.9), rgba(110, 40, 200, 0.22) 48%, transparent 74%);
+            animation: aurora-band 22s ease-in-out infinite reverse;
+            animation-delay: -6s;
+        }
+
+        .aurora-band-c {
+            background: radial-gradient(ellipse at 50% 40%, rgba(255, 220, 160, 0.88), rgba(200, 110, 40, 0.18) 48%, transparent 72%);
+            animation: aurora-band 19s ease-in-out infinite;
+            animation-delay: -11s;
+        }
+
+        @keyframes aurora-drift {
+            0%, 100% {
+                transform: scale(1) translate3d(0, 0, 0);
+                filter: saturate(1) brightness(1);
+            }
+            34% {
+                transform: scale(1.09) translate3d(4%, -1.6%, 0);
+                filter: saturate(1.16) brightness(1.05);
+            }
+            67% {
+                transform: scale(1.04) translate3d(-3.5%, 0.9%, 0);
+                filter: saturate(1.06) brightness(0.99);
+            }
+        }
+
+        @keyframes aurora-sheen {
+            0%, 100% { transform: scale(1.02) translate3d(2%, 0.2%, 0); opacity: 0.08; }
+            50%      { transform: scale(1.1) translate3d(-3.8%, 0.4%, 0); opacity: 0.45; }
+        }
+
+        @keyframes aurora-band {
+            0%, 100% { transform: translate3d(-20%, 0, 0) scaleY(1); opacity: 0.35; }
+            50%      { transform: translate3d(230%, -2%, 0) scaleY(1.06); opacity: 0.85; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sky-window {
+                display: none;
+            }
         }
 
         /* Dark overlay for text clarity */
-        .background-overlay::after {
-            content: '';
+        .veil {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.15); 
-            z-index: 2;
+            background: rgba(0, 0, 0, 0.15);
+            z-index: 4;
+            pointer-events: none;
         }
 
         .container {
@@ -90,7 +204,15 @@
     </style>
 </head>
 <body>
-    <div class="background-overlay"></div>
+    <div class="background-overlay" aria-hidden="true">
+        <div class="sky-window">
+            <div class="sky-drift"></div>
+            <div class="aurora-band aurora-band-a"></div>
+            <div class="aurora-band aurora-band-b"></div>
+            <div class="aurora-band aurora-band-c"></div>
+        </div>
+        <div class="veil"></div>
+    </div>
     
     <div class="container">
         <main>
