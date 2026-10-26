@@ -507,18 +507,18 @@
                 var windAt = 8.12;
                 for (var i = 0; i < particles.length; i++) {
                     var p = particles[i];
-                    var delay = p.xn * 0.28 + p.n1 * 0.38;
-                    var u = (t - windAt - delay) / 1.85;
+                    var delay = p.xn * 0.22 + p.n1 * 0.32;
+                    var u = (t - windAt - delay) / 2.35;
                     var k = smooth(u);
-                    var life = u <= 0 ? 1 : Math.pow(1 - Math.min(u, 1), 1.2);
+                    var life = u <= 0.62 ? 1 : Math.pow(1 - Math.min((u - 0.62) / 0.38, 1), 1.35);
                     var alpha = reveal * life;
-                    if (alpha < 0.02) continue;
-                    var dx = (28 + p.n2 * 150 + (p.n1 - 0.5) * 80) * k;
-                    var dy = (-18 - p.n3 * 120 + (p.n2 - 0.5) * 70) * k;
-                    if (p.n1 > 0.94) dy += (24 + p.n3 * 18) * k;
-                    dx += Math.sin(k * 3.2 + p.n3 * 11) * 7 * k;
-                    var size = (1.05 + p.n3 * 0.85) * (1 - k * 0.25);
-                    ctx.globalAlpha = alpha * (0.5 + p.n2 * 0.4);
+                    if (alpha < 0.025) continue;
+                    var dx = (36 + p.n2 * 160 + (p.n1 - 0.5) * 90) * k;
+                    var dy = (-22 - p.n3 * 130 + (p.n2 - 0.5) * 84) * k;
+                    if (p.n1 > 0.94) dy += (28 + p.n3 * 16) * k;
+                    dx += Math.sin(k * 2.8 + p.n3 * 11) * 8 * k;
+                    var size = (1.25 + p.n3 * 0.95) * (1 - k * 0.15);
+                    ctx.globalAlpha = alpha * (0.72 + p.n2 * 0.28);
                     ctx.drawImage(sprite, p.x + dx - size, p.y + dy - size, size * 2, size * 2);
                 }
                 ctx.globalAlpha = 1;
