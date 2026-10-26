@@ -304,13 +304,13 @@
 
             /* Irregular slices. Edge pieces extend past the box so the italic
                overhang and the g descender stay intact while the word is whole. */
-            .s1 { --clip: -32% -50%, 17.2% -50%, 13.4% 150%, -32% 150%; --origin: 8% 50%; --dx: -0.78em; --dy: -0.36em; --r: -6.5deg; }
-            .s2 { --clip: 14.6% -50%, 33.2% -6%, 29.4% 150%, 11.2% 122%; --origin: 23% 58%; --dx: -0.38em; --dy: -0.66em; --r: -3deg; }
-            .s3 { --clip: 30.2% -50%, 58.4% -50%, 54.2% 48%, 26.8% 40%; --origin: 44% 20%; --dx: 0.06em; --dy: -0.74em; --r: 4.5deg; }
-            .s4 { --clip: 24.8% 36%, 56.2% 44%, 60.4% 150%, 27.6% 150%; --origin: 42% 84%; --dx: -0.14em; --dy: 0.46em; --r: -3.5deg; }
-            .s5 { --clip: 52.2% -50%, 74.2% -16%, 78.2% 150%, 54.8% 150%; --origin: 66% 48%; --dx: 0.42em; --dy: -0.32em; --r: 5.5deg; }
-            .s6 { --clip: 71.2% -50%, 90.4% 8%, 94.2% 150%, 73.6% 132%; --origin: 83% 54%; --dx: 0.72em; --dy: 0.24em; --r: -4.5deg; }
-            .s7 { --clip: 86.2% -50%, 136% -50%, 136% 150%, 87.8% 128%; --origin: 102% 46%; --dx: 1.02em; --dy: -0.28em; --r: 4deg; }
+            .s1 { --clip: -32% -50%, 17.2% -50%, 13.4% 150%, -32% 150%; --origin: 8% 50%; --dx: -0.92em; --dy: -0.46em; --r: -8deg; }
+            .s2 { --clip: 14.6% -50%, 33.2% -6%, 29.4% 150%, 11.2% 122%; --origin: 23% 58%; --dx: -0.46em; --dy: -0.82em; --r: -4deg; }
+            .s3 { --clip: 30.2% -50%, 58.4% -50%, 54.2% 48%, 26.8% 40%; --origin: 44% 20%; --dx: 0.12em; --dy: -0.92em; --r: 6deg; }
+            .s4 { --clip: 24.8% 36%, 56.2% 44%, 60.4% 150%, 27.6% 150%; --origin: 42% 84%; --dx: -0.2em; --dy: 0.6em; --r: -5deg; }
+            .s5 { --clip: 52.2% -50%, 74.2% -16%, 78.2% 150%, 54.8% 150%; --origin: 66% 48%; --dx: 0.54em; --dy: -0.42em; --r: 7deg; }
+            .s6 { --clip: 71.2% -50%, 90.4% 8%, 94.2% 150%, 73.6% 132%; --origin: 83% 54%; --dx: 0.88em; --dy: 0.32em; --r: -6deg; }
+            .s7 { --clip: 86.2% -50%, 136% -50%, 136% 150%, 87.8% 128%; --origin: 102% 46%; --dx: 1.18em; --dy: -0.36em; --r: 5deg; }
 
             .ensemble {
                 display: flex;
@@ -333,12 +333,12 @@
                 transform: translateY(-0.22em);
                 animation-timing-function: linear;
             }
-            91.5% {
+            92.4% {
                 opacity: 0;
                 transform: translateY(0.28em);
                 animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
             }
-            96.5%, 100% {
+            97.2%, 100% {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -401,18 +401,25 @@
                 filter: none;
                 animation-timing-function: cubic-bezier(0.16, 0.72, 0.24, 1);
             }
-            66.4% {
+            /* Arrive broken while still opaque, hold, then dissolve. */
+            66.2% {
                 opacity: 1;
                 filter: drop-shadow(0 0 7px rgba(150, 255, 236, 0.42));
-                transform: translate3d(calc(var(--dx) * 0.62), calc(var(--dy) * 0.62), 0) rotate(calc(var(--r) * 0.62));
+                transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--r));
+                animation-timing-function: linear;
+            }
+            68.4% {
+                opacity: 1;
+                filter: drop-shadow(0 0 8px rgba(150, 255, 236, 0.28));
+                transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--r));
                 animation-timing-function: ease-in;
             }
-            70.5% {
+            71.4% {
                 opacity: 0;
                 filter: blur(1.15px) drop-shadow(0 0 12px rgba(188, 140, 255, 0.2));
-                transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--r)) scale(0.96);
+                transform: translate3d(calc(var(--dx) * 1.08), calc(var(--dy) * 1.08), 0) rotate(calc(var(--r) * 1.08)) scale(0.96);
             }
-            71.6%, 100% {
+            72.4%, 100% {
                 opacity: 0;
                 transform: none;
                 filter: none;
@@ -421,27 +428,28 @@
 
         @keyframes shard-glow {
             0%, 60.4% { opacity: 0; }
-            62.4% { opacity: 0.95; }
-            70.5%, 100% { opacity: 0; }
+            62.6% { opacity: 0.95; }
+            68.4% { opacity: 0.55; }
+            71.4%, 100% { opacity: 0; }
         }
 
         @keyframes ensemble-beat {
-            0%, 72% {
+            0%, 73.2% {
                 opacity: 0;
                 transform: translateY(0.18em);
                 animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
             }
-            76% {
+            77% {
                 opacity: 1;
                 transform: translateY(0);
                 animation-timing-function: linear;
             }
-            87.5% {
+            88% {
                 opacity: 1;
                 transform: translateY(0);
                 animation-timing-function: ease-in;
             }
-            91.5%, 100% {
+            92%, 100% {
                 opacity: 0;
                 transform: translateY(-0.12em);
             }
