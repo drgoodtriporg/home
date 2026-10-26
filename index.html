@@ -201,6 +201,36 @@
             color: rgba(255, 255, 255, 0.7);
             font-style: italic;
         }
+
+        /* One word at a time, then the next, then the next.
+           Each line keeps its own size, weight, and italic.
+           prefers-reduced-motion leaves the original three-line stack. */
+        @media (prefers-reduced-motion: no-preference) {
+            h1 {
+                display: grid;
+                justify-items: center;
+                align-items: center;
+            }
+
+            h1 span {
+                grid-area: 1 / 1;
+                margin: 0;
+                opacity: 0;
+                animation: word-cycle 18s ease-in-out infinite;
+            }
+
+            .line-1 { animation-delay: -1.5s; }
+            .line-2 { animation-delay: 4.5s; }
+            .line-3 { animation-delay: 10.5s; }
+        }
+
+        @keyframes word-cycle {
+            0%   { opacity: 0; transform: translateY(0.28em); }
+            5%   { opacity: 1; transform: translateY(0); }
+            30%  { opacity: 1; transform: translateY(0); }
+            38%  { opacity: 0; transform: translateY(-0.22em); }
+            100% { opacity: 0; transform: translateY(0.28em); }
+        }
     </style>
 </head>
 <body>
