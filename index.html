@@ -150,6 +150,12 @@
             .sky-window {
                 display: none;
             }
+
+            /* No shatter and no reprise — the three lines stay stacked and still. */
+            .nothing-shards,
+            .ensemble {
+                display: none;
+            }
         }
 
         /* Dark overlay for text clarity */
@@ -202,34 +208,251 @@
             font-style: italic;
         }
 
-        /* One word at a time, then the next, then the next.
-           Each line keeps its own size, weight, and italic.
-           prefers-reduced-motion leaves the original three-line stack. */
+        /* The solid word is what reduced-motion and screen readers get.
+           Shards and the stacked reprise are motion-only. */
+        .nothing-solid {
+            display: contents;
+        }
+
+        .nothing-shards,
+        .ensemble {
+            display: none;
+            user-select: none;
+        }
+
+        /* 14s score:
+           ANYTHING and EVERYTHING crossfade, NOTHING holds, then
+           breaks into shards. After the shards dissolve, all three
+           words show together in the original stack, then ANYTHING
+           returns. prefers-reduced-motion never enters this block. */
         @media (prefers-reduced-motion: no-preference) {
             h1 {
                 display: grid;
                 justify-items: center;
                 align-items: center;
+                --cycle: 14s;
             }
 
-            h1 span {
+            h1 > .line-1,
+            h1 > .line-2,
+            h1 > .line-3,
+            h1 > .ensemble {
                 grid-area: 1 / 1;
-                margin: 0;
-                opacity: 0;
-                animation: word-cycle 9s ease-in-out infinite;
             }
 
-            .line-1 { animation-delay: -0.75s; }
-            .line-2 { animation-delay: 2.25s; }
-            .line-3 { animation-delay: 5.25s; }
+            h1 > .line-1,
+            h1 > .line-2,
+            h1 > .line-3 {
+                margin: 0;
+            }
+
+            h1 > .line-1 { animation: solo-anything var(--cycle) linear infinite; }
+            h1 > .line-2 { animation: solo-everything var(--cycle) linear infinite; }
+
+            h1 > .line-3 {
+                position: relative;
+                z-index: 1;
+                white-space: nowrap;
+                animation: nothing-slot var(--cycle) linear infinite;
+            }
+
+            .nothing-solid {
+                display: block;
+                position: relative;
+                z-index: 2;
+                animation: nothing-solid var(--cycle) linear infinite;
+            }
+
+            .nothing-shards {
+                display: block;
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .nothing-shards::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 54%;
+                z-index: 0;
+                width: 130%;
+                height: 2.4em;
+                transform: translate(-50%, -50%);
+                background: radial-gradient(ellipse at center,
+                    rgba(186, 255, 242, 0.34),
+                    rgba(176, 120, 255, 0.12) 46%,
+                    transparent 72%);
+                mix-blend-mode: screen;
+                opacity: 0;
+                animation: shard-glow var(--cycle) linear infinite;
+                pointer-events: none;
+            }
+
+            .shard {
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                display: block;
+                text-align: center;
+                white-space: nowrap;
+                clip-path: polygon(var(--clip));
+                transform-origin: var(--origin);
+                animation: shard-fly var(--cycle) linear infinite;
+            }
+
+            /* Irregular slices. Edge pieces extend past the box so the italic
+               overhang and the g descender stay intact while the word is whole. */
+            .s1 { --clip: -32% -50%, 17.2% -50%, 13.4% 150%, -32% 150%; --origin: 8% 50%; --dx: -0.92em; --dy: -0.46em; --r: -8deg; }
+            .s2 { --clip: 14.6% -50%, 33.2% -6%, 29.4% 150%, 11.2% 122%; --origin: 23% 58%; --dx: -0.46em; --dy: -0.82em; --r: -4deg; }
+            .s3 { --clip: 30.2% -50%, 58.4% -50%, 54.2% 48%, 26.8% 40%; --origin: 44% 20%; --dx: 0.12em; --dy: -0.92em; --r: 6deg; }
+            .s4 { --clip: 24.8% 36%, 56.2% 44%, 60.4% 150%, 27.6% 150%; --origin: 42% 84%; --dx: -0.2em; --dy: 0.6em; --r: -5deg; }
+            .s5 { --clip: 52.2% -50%, 74.2% -16%, 78.2% 150%, 54.8% 150%; --origin: 66% 48%; --dx: 0.54em; --dy: -0.42em; --r: 7deg; }
+            .s6 { --clip: 71.2% -50%, 90.4% 8%, 94.2% 150%, 73.6% 132%; --origin: 83% 54%; --dx: 0.88em; --dy: 0.32em; --r: -6deg; }
+            .s7 { --clip: 86.2% -50%, 136% -50%, 136% 150%, 87.8% 128%; --origin: 102% 46%; --dx: 1.18em; --dy: -0.36em; --r: 5deg; }
+
+            .ensemble {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 2;
+                pointer-events: none;
+                animation: ensemble-beat var(--cycle) linear infinite;
+            }
         }
 
-        @keyframes word-cycle {
-            0%   { opacity: 0; transform: translateY(0.28em); }
-            5%   { opacity: 1; transform: translateY(0); }
-            30%  { opacity: 1; transform: translateY(0); }
-            38%  { opacity: 0; transform: translateY(-0.22em); }
-            100% { opacity: 0; transform: translateY(0.28em); }
+        @keyframes solo-anything {
+            0%, 13% {
+                opacity: 1;
+                transform: translateY(0);
+                animation-timing-function: ease-in;
+            }
+            18% {
+                opacity: 0;
+                transform: translateY(-0.22em);
+                animation-timing-function: linear;
+            }
+            92.4% {
+                opacity: 0;
+                transform: translateY(0.28em);
+                animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+            }
+            97.2%, 100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes solo-everything {
+            0%, 15.5% {
+                opacity: 0;
+                transform: translateY(0.28em);
+                animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+            }
+            20.5% {
+                opacity: 1;
+                transform: translateY(0);
+                animation-timing-function: linear;
+            }
+            36.5% {
+                opacity: 1;
+                transform: translateY(0);
+                animation-timing-function: ease-in;
+            }
+            41.5% {
+                opacity: 0;
+                transform: translateY(-0.22em);
+            }
+            42%, 100% {
+                opacity: 0;
+                transform: translateY(0.28em);
+            }
+        }
+
+        @keyframes nothing-slot {
+            0%, 39% { transform: translateY(0.28em); animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1); }
+            44%, 100% { transform: translateY(0); }
+        }
+
+        @keyframes nothing-solid {
+            0%, 39% { opacity: 0; filter: brightness(1); }
+            44% { opacity: 1; filter: brightness(1); animation-timing-function: linear; }
+            59.6% { opacity: 1; filter: brightness(1); animation-timing-function: ease-out; }
+            60.7% { opacity: 1; filter: brightness(1.42); }
+            61.2%, 100% { opacity: 0; filter: brightness(1); }
+        }
+
+        @keyframes shard-fly {
+            0%, 59.2% {
+                opacity: 0;
+                transform: none;
+                filter: none;
+            }
+            60% {
+                opacity: 1;
+                transform: none;
+                filter: none;
+                animation-timing-function: linear;
+            }
+            61.2% {
+                opacity: 1;
+                transform: none;
+                filter: none;
+                animation-timing-function: cubic-bezier(0.16, 0.72, 0.24, 1);
+            }
+            /* Arrive broken while still opaque, hold, then dissolve. */
+            66.2% {
+                opacity: 1;
+                filter: drop-shadow(0 0 7px rgba(150, 255, 236, 0.42));
+                transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--r));
+                animation-timing-function: linear;
+            }
+            68.4% {
+                opacity: 1;
+                filter: drop-shadow(0 0 8px rgba(150, 255, 236, 0.28));
+                transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--r));
+                animation-timing-function: ease-in;
+            }
+            71.4% {
+                opacity: 0;
+                filter: blur(1.15px) drop-shadow(0 0 12px rgba(188, 140, 255, 0.2));
+                transform: translate3d(calc(var(--dx) * 1.08), calc(var(--dy) * 1.08), 0) rotate(calc(var(--r) * 1.08)) scale(0.96);
+            }
+            72.4%, 100% {
+                opacity: 0;
+                transform: none;
+                filter: none;
+            }
+        }
+
+        @keyframes shard-glow {
+            0%, 60.4% { opacity: 0; }
+            62.6% { opacity: 0.95; }
+            68.4% { opacity: 0.55; }
+            71.4%, 100% { opacity: 0; }
+        }
+
+        @keyframes ensemble-beat {
+            0%, 73.2% {
+                opacity: 0;
+                transform: translateY(0.18em);
+                animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+            }
+            77% {
+                opacity: 1;
+                transform: translateY(0);
+                animation-timing-function: linear;
+            }
+            88% {
+                opacity: 1;
+                transform: translateY(0);
+                animation-timing-function: ease-in;
+            }
+            92%, 100% {
+                opacity: 0;
+                transform: translateY(-0.12em);
+            }
         }
     </style>
 </head>
@@ -249,7 +472,12 @@
             <h1>
                 <span class="line-1">anything</span>
                 <span class="line-2">everything</span>
-                <span class="line-3">nothing</span>
+                <span class="line-3"><span class="nothing-solid">nothing</span><span class="nothing-shards" aria-hidden="true"><span class="shard s1">nothing</span><span class="shard s2">nothing</span><span class="shard s3">nothing</span><span class="shard s4">nothing</span><span class="shard s5">nothing</span><span class="shard s6">nothing</span><span class="shard s7">nothing</span></span></span>
+                <span class="ensemble" aria-hidden="true">
+                    <span class="line-1">anything</span>
+                    <span class="line-2">everything</span>
+                    <span class="line-3">nothing</span>
+                </span>
             </h1>
         </main>
     </div>
