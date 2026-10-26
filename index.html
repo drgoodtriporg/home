@@ -151,8 +151,8 @@
                 display: none;
             }
 
-            /* No shatter and no reprise — the three lines stay stacked and still. */
-            .nothing-shards,
+            /* No dust and no reprise — the three lines stay stacked and still. */
+            .nothing-dust,
             .ensemble {
                 display: none;
             }
@@ -214,23 +214,23 @@
             display: contents;
         }
 
-        .nothing-shards,
+        .nothing-dust,
         .ensemble {
             display: none;
             user-select: none;
         }
 
-        /* 14s score:
+        /* 18s score:
            ANYTHING and EVERYTHING crossfade, NOTHING holds, then
-           breaks into shards. After the shards dissolve, all three
-           words show together in the original stack, then ANYTHING
-           returns. prefers-reduced-motion never enters this block. */
+           loosens into fine dust and blows away on the aurora.
+           All three words then rest in the original stack before
+           ANYTHING returns. prefers-reduced-motion never enters. */
         @media (prefers-reduced-motion: no-preference) {
             h1 {
                 display: grid;
                 justify-items: center;
                 align-items: center;
-                --cycle: 14s;
+                --cycle: 18s;
             }
 
             h1 > .line-1,
@@ -263,54 +263,14 @@
                 animation: nothing-solid var(--cycle) linear infinite;
             }
 
-            .nothing-shards {
+            .nothing-dust {
                 display: block;
                 position: absolute;
-                inset: 0;
                 z-index: 1;
+                width: 0;
+                height: 0;
                 pointer-events: none;
             }
-
-            .nothing-shards::after {
-                content: "";
-                position: absolute;
-                left: 50%;
-                top: 54%;
-                z-index: 0;
-                width: 130%;
-                height: 2.4em;
-                transform: translate(-50%, -50%);
-                background: radial-gradient(ellipse at center,
-                    rgba(186, 255, 242, 0.34),
-                    rgba(176, 120, 255, 0.12) 46%,
-                    transparent 72%);
-                mix-blend-mode: screen;
-                opacity: 0;
-                animation: shard-glow var(--cycle) linear infinite;
-                pointer-events: none;
-            }
-
-            .shard {
-                position: absolute;
-                inset: 0;
-                z-index: 1;
-                display: block;
-                text-align: center;
-                white-space: nowrap;
-                clip-path: polygon(var(--clip));
-                transform-origin: var(--origin);
-                animation: shard-fly var(--cycle) linear infinite;
-            }
-
-            /* Irregular slices. Edge pieces extend past the box so the italic
-               overhang and the g descender stay intact while the word is whole. */
-            .s1 { --clip: -32% -50%, 17.2% -50%, 13.4% 150%, -32% 150%; --origin: 8% 50%; --dx: -0.92em; --dy: -0.46em; --r: -8deg; }
-            .s2 { --clip: 14.6% -50%, 33.2% -6%, 29.4% 150%, 11.2% 122%; --origin: 23% 58%; --dx: -0.46em; --dy: -0.82em; --r: -4deg; }
-            .s3 { --clip: 30.2% -50%, 58.4% -50%, 54.2% 48%, 26.8% 40%; --origin: 44% 20%; --dx: 0.12em; --dy: -0.92em; --r: 6deg; }
-            .s4 { --clip: 24.8% 36%, 56.2% 44%, 60.4% 150%, 27.6% 150%; --origin: 42% 84%; --dx: -0.2em; --dy: 0.6em; --r: -5deg; }
-            .s5 { --clip: 52.2% -50%, 74.2% -16%, 78.2% 150%, 54.8% 150%; --origin: 66% 48%; --dx: 0.54em; --dy: -0.42em; --r: 7deg; }
-            .s6 { --clip: 71.2% -50%, 90.4% 8%, 94.2% 150%, 73.6% 132%; --origin: 83% 54%; --dx: 0.88em; --dy: 0.32em; --r: -6deg; }
-            .s7 { --clip: 86.2% -50%, 136% -50%, 136% 150%, 87.8% 128%; --origin: 102% 46%; --dx: 1.18em; --dy: -0.36em; --r: 5deg; }
 
             .ensemble {
                 display: flex;
@@ -323,137 +283,88 @@
         }
 
         @keyframes solo-anything {
-            0%, 13% {
+            0%, 7.22% {
                 opacity: 1;
                 transform: translateY(0);
                 animation-timing-function: ease-in;
             }
-            18% {
+            11.11% {
                 opacity: 0;
                 transform: translateY(-0.22em);
                 animation-timing-function: linear;
             }
-            92.4% {
+            90.56% {
                 opacity: 0;
                 transform: translateY(0.28em);
                 animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
             }
-            97.2%, 100% {
+            94.17%, 100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
         @keyframes solo-everything {
-            0%, 15.5% {
+            0%, 9.17% {
                 opacity: 0;
                 transform: translateY(0.28em);
                 animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
             }
-            20.5% {
+            12.5% {
                 opacity: 1;
                 transform: translateY(0);
                 animation-timing-function: linear;
             }
-            36.5% {
+            25% {
                 opacity: 1;
                 transform: translateY(0);
                 animation-timing-function: ease-in;
             }
-            41.5% {
+            28.89% {
                 opacity: 0;
                 transform: translateY(-0.22em);
             }
-            42%, 100% {
+            29.5%, 100% {
                 opacity: 0;
                 transform: translateY(0.28em);
             }
         }
 
         @keyframes nothing-slot {
-            0%, 39% { transform: translateY(0.28em); animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1); }
-            44%, 100% { transform: translateY(0); }
+            0%, 26.39% { transform: translateY(0.28em); animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1); }
+            29.72%, 100% { transform: translateY(0); }
         }
 
         @keyframes nothing-solid {
-            0%, 39% { opacity: 0; filter: brightness(1); }
-            44% { opacity: 1; filter: brightness(1); animation-timing-function: linear; }
-            59.6% { opacity: 1; filter: brightness(1); animation-timing-function: ease-out; }
-            60.7% { opacity: 1; filter: brightness(1.42); }
-            61.2%, 100% { opacity: 0; filter: brightness(1); }
-        }
-
-        @keyframes shard-fly {
-            0%, 59.2% {
-                opacity: 0;
-                transform: none;
-                filter: none;
-            }
-            60% {
-                opacity: 1;
-                transform: none;
-                filter: none;
-                animation-timing-function: linear;
-            }
-            61.2% {
-                opacity: 1;
-                transform: none;
-                filter: none;
-                animation-timing-function: cubic-bezier(0.16, 0.72, 0.24, 1);
-            }
-            /* Arrive broken while still opaque, hold, then dissolve. */
-            66.2% {
-                opacity: 1;
-                filter: drop-shadow(0 0 7px rgba(150, 255, 236, 0.42));
-                transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--r));
-                animation-timing-function: linear;
-            }
-            68.4% {
-                opacity: 1;
-                filter: drop-shadow(0 0 8px rgba(150, 255, 236, 0.28));
-                transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--r));
-                animation-timing-function: ease-in;
-            }
-            71.4% {
-                opacity: 0;
-                filter: blur(1.15px) drop-shadow(0 0 12px rgba(188, 140, 255, 0.2));
-                transform: translate3d(calc(var(--dx) * 1.08), calc(var(--dy) * 1.08), 0) rotate(calc(var(--r) * 1.08)) scale(0.96);
-            }
-            72.4%, 100% {
-                opacity: 0;
-                transform: none;
-                filter: none;
-            }
-        }
-
-        @keyframes shard-glow {
-            0%, 60.4% { opacity: 0; }
-            62.6% { opacity: 0.95; }
-            68.4% { opacity: 0.55; }
-            71.4%, 100% { opacity: 0; }
+            0%, 26.39% { opacity: 0; filter: brightness(1); }
+            29.72% { opacity: 1; filter: brightness(1); animation-timing-function: linear; }
+            42.22% { opacity: 1; filter: brightness(1); animation-timing-function: ease-out; }
+            43.6% { opacity: 1; filter: brightness(1.12); }
+            44.72%, 100% { opacity: 0; filter: brightness(1); }
         }
 
         @keyframes ensemble-beat {
-            0%, 73.2% {
+            0%, 63.61% {
                 opacity: 0;
-                transform: translateY(0.18em);
+                transform: translateY(0.16em);
                 animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
             }
-            77% {
+            66.94% {
                 opacity: 1;
                 transform: translateY(0);
                 animation-timing-function: linear;
             }
-            88% {
+            85.56% {
                 opacity: 1;
                 transform: translateY(0);
                 animation-timing-function: ease-in;
             }
-            92%, 100% {
+            89.17%, 100% {
                 opacity: 0;
-                transform: translateY(-0.12em);
+                transform: translateY(-0.1em);
             }
         }
+
     </style>
 </head>
 <body>
@@ -472,7 +383,7 @@
             <h1>
                 <span class="line-1">anything</span>
                 <span class="line-2">everything</span>
-                <span class="line-3"><span class="nothing-solid">nothing</span><span class="nothing-shards" aria-hidden="true"><span class="shard s1">nothing</span><span class="shard s2">nothing</span><span class="shard s3">nothing</span><span class="shard s4">nothing</span><span class="shard s5">nothing</span><span class="shard s6">nothing</span><span class="shard s7">nothing</span></span></span>
+                <span class="line-3"><span class="nothing-solid">nothing</span><canvas class="nothing-dust" width="0" height="0" aria-hidden="true"></canvas></span>
                 <span class="ensemble" aria-hidden="true">
                     <span class="line-1">anything</span>
                     <span class="line-2">everything</span>
@@ -481,5 +392,147 @@
             </h1>
         </main>
     </div>
+    <script>
+        (function () {
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (reduce.matches) return;
+
+            var solid = document.querySelector('.nothing-solid');
+            var canvas = document.querySelector('.nothing-dust');
+            if (!solid || !canvas || !canvas.getContext) return;
+            var ctx = canvas.getContext('2d', { alpha: true });
+            var particles = [];
+            var builtKey = '';
+            var textPoint = { x: 0, y: 0 };
+            var sprite = document.createElement('canvas');
+            sprite.width = sprite.height = 16;
+            var sctx = sprite.getContext('2d');
+            var grad = sctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+            grad.addColorStop(0, 'rgba(255,255,255,1)');
+            grad.addColorStop(0.4, 'rgba(255,255,255,0.5)');
+            grad.addColorStop(1, 'rgba(255,255,255,0)');
+            sctx.fillStyle = grad;
+            sctx.fillRect(0, 0, 16, 16);
+
+            function fract(v) { return v - Math.floor(v); }
+
+            function smooth(u) {
+                if (u <= 0) return 0;
+                if (u >= 1) return 1;
+                return u * u * (3 - 2 * u);
+            }
+
+            function rebuild() {
+                var cs = getComputedStyle(solid);
+                var host = solid.parentElement.getBoundingClientRect();
+                if (host.width < 2 || host.height < 2) return;
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                var padL = host.width * 0.55;
+                var padR = host.width * 1.7;
+                var padT = host.height * 3.4;
+                var padB = host.height * 1.1;
+                var cssW = host.width + padL + padR;
+                var cssH = host.height + padT + padB;
+                canvas.style.width = cssW + 'px';
+                canvas.style.height = cssH + 'px';
+                canvas.width = Math.max(1, Math.ceil(cssW * dpr));
+                canvas.height = Math.max(1, Math.ceil(cssH * dpr));
+                textPoint.x = padL + host.width / 2;
+                textPoint.y = padT + host.height / 2;
+                canvas.style.left = (-padL) + 'px';
+                canvas.style.top = (-padT) + 'px';
+
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                ctx.clearRect(0, 0, cssW, cssH);
+                ctx.font = cs.font;
+                try { ctx.letterSpacing = cs.letterSpacing; } catch (e) {}
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillStyle = '#fff';
+                ctx.fillText('NOTHING', textPoint.x, textPoint.y);
+
+                var img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var data = img.data;
+                var w = canvas.width;
+                var stride = Math.max(1, Math.round(dpr * 1.55));
+                var next = [];
+                for (var y = 0; y < canvas.height; y += stride) {
+                    for (var x = 0; x < w; x += stride) {
+                        if (data[(y * w + x) * 4 + 3] < 40) continue;
+                        var i = next.length + 1;
+                        next.push({
+                            x: x / dpr,
+                            y: y / dpr,
+                            n1: fract(Math.sin(i * 127.1) * 43758.5),
+                            n2: fract(Math.sin(i * 269.5) * 24634.6),
+                            n3: fract(Math.sin(i * 419.2) * 12578.3)
+                        });
+                    }
+                }
+                var minX = Infinity, maxX = -Infinity;
+                for (var p = 0; p < next.length; p++) {
+                    if (next[p].x < minX) minX = next[p].x;
+                    if (next[p].x > maxX) maxX = next[p].x;
+                }
+                var span = Math.max(1, maxX - minX);
+                for (var q = 0; q < next.length; q++) next[q].xn = (next[q].x - minX) / span;
+                particles = next;
+                builtKey = cs.font + '|' + cs.letterSpacing + '|' + Math.round(host.width) + 'x' + Math.round(host.height) + '@' + dpr;
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            function frame() {
+                requestAnimationFrame(frame);
+                var anims = solid.getAnimations();
+                if (!anims.length || anims[0].currentTime == null) return;
+                var anim = anims[0];
+                var cs = getComputedStyle(solid);
+                var host = solid.parentElement.getBoundingClientRect();
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                var key = cs.font + '|' + cs.letterSpacing + '|' + Math.round(host.width) + 'x' + Math.round(host.height) + '@' + dpr;
+                if (key !== builtKey) rebuild();
+                if (!particles.length) return;
+
+                var dur = anim.effect.getTiming().duration;
+                var t = (anim.currentTime % dur) / 1000;
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                if (t < 7.55 || t > 11.25) return;
+
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                var solidOp = parseFloat(cs.opacity);
+                if (isNaN(solidOp)) solidOp = 0;
+                var reveal = 1 - Math.min(1, Math.max(0, solidOp));
+                var windAt = 8.12;
+                for (var i = 0; i < particles.length; i++) {
+                    var p = particles[i];
+                    var delay = p.xn * 0.28 + p.n1 * 0.38;
+                    var u = (t - windAt - delay) / 1.85;
+                    var k = smooth(u);
+                    var life = u <= 0 ? 1 : Math.pow(1 - Math.min(u, 1), 1.2);
+                    var alpha = reveal * life;
+                    if (alpha < 0.02) continue;
+                    var dx = (28 + p.n2 * 150 + (p.n1 - 0.5) * 80) * k;
+                    var dy = (-18 - p.n3 * 120 + (p.n2 - 0.5) * 70) * k;
+                    if (p.n1 > 0.94) dy += (24 + p.n3 * 18) * k;
+                    dx += Math.sin(k * 3.2 + p.n3 * 11) * 7 * k;
+                    var size = (1.05 + p.n3 * 0.85) * (1 - k * 0.25);
+                    ctx.globalAlpha = alpha * (0.5 + p.n2 * 0.4);
+                    ctx.drawImage(sprite, p.x + dx - size, p.y + dy - size, size * 2, size * 2);
+                }
+                ctx.globalAlpha = 1;
+            }
+
+            function start() {
+                rebuild();
+                requestAnimationFrame(frame);
+            }
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+            else start();
+            window.addEventListener('resize', function () { builtKey = ''; });
+        }());
+    </script>
+
 </body>
 </html>
